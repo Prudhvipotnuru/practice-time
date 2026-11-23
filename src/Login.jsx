@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 function Login(){
     const [username,setUsername]=useState('');
     const [password, setPassword]=useState('');
     const [error,setError]=useState('');
     const navigate=useNavigate();
+    const {login}=useAuth();
     async function handleSubmit(e){
         e.preventDefault();
         setError('')
@@ -18,10 +20,10 @@ function Login(){
                 body: JSON.stringify({username,password})
             });
             const text = await res.text();
-            console.log('status:', res.status, '| body:', text);
-
+            
             if (!res.ok) { setError('Invalid username or password'); return; }
-            console.log('token response:', text);
+
+            login(text.trim(),username);
             navigate('/');
         }catch (err) {
             setError('Could not reach the server');
