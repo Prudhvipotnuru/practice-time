@@ -9,7 +9,7 @@ function Login(){
     const navigate=useNavigate();
     const {login, isLoggedIn}=useAuth();
 
-    if(isLoggedIn) <Navigate to="/" replace/>;
+    if(isLoggedIn) return <Navigate to="/" replace/>;
 
     async function handleSubmit(e){
         e.preventDefault();
