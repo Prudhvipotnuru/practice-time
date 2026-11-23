@@ -7,19 +7,20 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { About } from './About.jsx'
 import Login from './Login.jsx'
 import { AuthProvider } from './AuthContext.jsx'
+import ProtectedRoute from './ProtectedRoute.jsx'
 
 const router = createBrowserRouter([
     {
         path:"/",
-        element:<Layout/>,
+        element:<ProtectedRoute><Layout/></ProtectedRoute>,
         children:[
             {
                 path:"/",
-                element:<App/>
+                element:<ProtectedRoute><App/></ProtectedRoute>
             },
             {
                 path:"/about",
-                element:<About/>
+                element: <ProtectedRoute><About/></ProtectedRoute>
             },{
                 path:"/login",
                 element:<Login/>

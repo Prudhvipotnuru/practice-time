@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
 function Login(){
@@ -7,7 +7,10 @@ function Login(){
     const [password, setPassword]=useState('');
     const [error,setError]=useState('');
     const navigate=useNavigate();
-    const {login}=useAuth();
+    const {login, isLoggedIn}=useAuth();
+
+    if(isLoggedIn) <Navigate to="/" replace/>;
+
     async function handleSubmit(e){
         e.preventDefault();
         setError('')

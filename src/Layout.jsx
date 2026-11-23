@@ -17,7 +17,7 @@ function Layout(){
                     <>
                         <span className="ml-auto">Hi, {user}</span>
                         <button onClick={logout} className="bg-red-300 px-3 py-1 rounded-lg
-                        cursor-pointer hover:scale-105 border-[1px] border-black">Logout</button>
+                        cursor-pointer hover:scale-105 duration-300 border-black shadow-2xl">Logout</button>
                     </>
                     ) : (
                     <Link to="/login" className="ml-auto">Login</Link>
