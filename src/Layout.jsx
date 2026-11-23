@@ -11,6 +11,7 @@ function Layout(){
                     </div>
                     <Link to="/">Home</Link>
                     <Link to="/about">About</Link>
+                    <Link to="/login">Login</Link>
                 </nav>
             </div>
             <div className="py-30 px-10">
