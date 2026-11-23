@@ -1,9 +1,11 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 function Login(){
     const [username,setUsername]=useState('');
     const [password, setPassword]=useState('');
     const [error,setError]=useState('');
+    const navigate=useNavigate();
     async function handleSubmit(e){
         e.preventDefault();
         setError('')
@@ -19,7 +21,8 @@ function Login(){
             console.log('status:', res.status, '| body:', text);
 
             if (!res.ok) { setError('Invalid username or password'); return; }
-            console.log('token response:', JSON.parse(text));
+            console.log('token response:', text);
+            navigate('/');
         }catch (err) {
             setError('Could not reach the server');
             console.error(err);
@@ -33,6 +36,7 @@ function Login(){
                 placeholder="Username"/>
                 <input value={password} type="password" onChange={(e)=> setPassword(e.target.value)}
                 placeholder="Password"/>
+                {error && <p>{error}</p> }
                 <button type="submit">Login</button>
             </form>
         </>
